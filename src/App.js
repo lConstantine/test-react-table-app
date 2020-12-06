@@ -16,9 +16,6 @@ const App = () => {
   const [modeSelected, setModeSelected] = useState(false)
   const [row, setRow] = useState(null)
   const [search, setSearch] = useState('')
-
-  console.log(data)
-
   const [currentPage, setCurrentPage] = useState(1)
 
   const fetchData = async(url) => {
@@ -61,7 +58,12 @@ const App = () => {
             <Form data={data} setData={setData} />
             <Search onSearch={onSearch} />
           </div>
-          <Table data={data} onSelectRow={onSelectRow} search={search} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+          <Table
+            data={data}
+            onSelectRow={onSelectRow}
+            search={search}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage} />
         </>
       }
 

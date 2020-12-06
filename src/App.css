@@ -70,10 +70,16 @@
   padding: 10px;
 }
 
-.search-button {
+#search-button {
   z-index: 0;
 }
 
 .add-button {
   margin-top: 10px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 64vw;
 }

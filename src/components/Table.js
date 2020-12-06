@@ -37,11 +37,9 @@ const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
   const { items, requestSort, sortConfig } = useSortableData(data);
 
   const getFilteredData = (items, search) => {
-
      if (!search) {
        return items
      }
-
 
     return items.filter(it => {
       return it.firstName.toLowerCase().includes(search.toLowerCase())
@@ -51,26 +49,18 @@ const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
   }
 
 
-
   const filteredData = getFilteredData(items, search)
-
   const itemsPerPage = 50
-
   const pageCount = Math.ceil(filteredData.length / itemsPerPage)
-
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
   const currentItems = filteredData.slice(
     indexOfFirstItem,
     indexOfLastItem
   );
-
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber.selected+1)
   }
-
-
 
 
   return (

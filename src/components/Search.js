@@ -8,7 +8,7 @@ const Search = ({ onSearch }) => {
     <div className="input-group mb-3 mt-3">
       <input type="text" className="form-control" value={value} onChange={(e) => setValue(e.target.value)}/>
       <div className="input-group-append">
-        <button className="btn btn-outline-secondary search-button" onClick={() => onSearch(value)}>Search</button>
+        <button className="btn btn-outline-secondary" id="search-button" onClick={() => onSearch(value)}>Search</button>
       </div>
     </div>
   )
