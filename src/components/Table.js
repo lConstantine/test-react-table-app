@@ -1,12 +1,13 @@
 import React, { useState, useMemo } from 'react'
 
-const Table = ({ data, onSelect }) => {
+
+const Table = ({ data, onSelectRow }) => {
 
   const useSortableData = (items, config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
 
     const sortedItems = useMemo(() => {
-      let sortableItems = [...items];
+      const sortableItems = [...items];
       if (sortConfig !== null) {
         sortableItems.sort((a, b) => {
           if (a[sortConfig.key] < b[sortConfig.key]) {
@@ -33,7 +34,7 @@ const Table = ({ data, onSelect }) => {
   }
 
   const { items, requestSort, sortConfig } = useSortableData(data);
-  
+
 
   return (
     <table className="table">
@@ -48,7 +49,7 @@ const Table = ({ data, onSelect }) => {
       </thead>
       <tbody>
         {items.map((it, idx) => (
-          <tr key={idx} onClick={() => onSelect(it)}>
+          <tr key={idx} onClick={() => onSelectRow(it)}>
             <td>{it.id}</td>
             <td>{it.firstName}</td>
             <td>{it.lastName}</td>
