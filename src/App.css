@@ -43,3 +43,37 @@
   justify-content: center;
   padding-top: 100px;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-top {
+  margin: 20px;
+  padding: 0;
+  width: 20%;
+  height: 15%;
+}
+
+.form {
+  position: absolute;
+  z-index: 1;
+  padding: 100px 50px 50px;
+  width: 100%;
+  background-color:rgba(255,255,255,0.95);
+}
+
+.form-table {
+  width: 70%;
+  height: 30px;
+  padding: 10px;
+}
+
+.search-button {
+  z-index: 0;
+}
+
+.add-button {
+  margin-top: 10px;
+}

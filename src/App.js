@@ -6,6 +6,7 @@ import Table from './components/Table'
 import RowDetails from './components/RowDetails'
 import ModeSelector from './components/ModeSelector'
 import Search from './components/Search'
+import Form from './components/Form'
 
 
 const App = () => {
@@ -15,6 +16,8 @@ const App = () => {
   const [modeSelected, setModeSelected] = useState(false)
   const [row, setRow] = useState(null)
   const [search, setSearch] = useState('')
+
+  console.log(data)
 
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -54,7 +57,10 @@ const App = () => {
 
       { loading ? <h1 className="loader">Loading...</h1>
       : <>
-          <Search onSearch={onSearch} />
+          <div className="header">
+            <Form data={data} setData={setData} />
+            <Search onSearch={onSearch} />
+          </div>
           <Table data={data} onSelectRow={onSelectRow} search={search} currentPage={currentPage} setCurrentPage={setCurrentPage} />
         </>
       }

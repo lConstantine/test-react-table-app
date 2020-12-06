@@ -36,8 +36,6 @@ const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
 
   const { items, requestSort, sortConfig } = useSortableData(data);
 
-
-
   const getFilteredData = (items, search) => {
 
      if (!search) {
@@ -118,7 +116,6 @@ const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
           previousLinkClassName="page-link"
           nextClassName="page-item"
           nextLinkClassName="page-link"
-          forcePage={currentPage}
         />
       : null
     }
