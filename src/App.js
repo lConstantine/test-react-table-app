@@ -5,7 +5,8 @@ import axios from 'axios'
 import Table from './components/Table'
 import RowDetails from './components/RowDetails'
 import ModeSelector from './components/ModeSelector'
-import ReactPaginate from 'react-paginate'
+import Search from './components/Search'
+
 
 const App = () => {
 
@@ -30,22 +31,6 @@ const App = () => {
   }
 
 
-  // pagination
-
-  const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 50
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
-
-  const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber.selected+1)
-  }
-
   const onSelectRow = selectedRow => {
   setRow(selectedRow)
 }
@@ -53,36 +38,18 @@ const App = () => {
   return (
 
     !modeSelected
-    ? <div className="container">
+    ? <div className="mode-selector-container">
         <ModeSelector onSelectMode={onSelectMode}/>
     </div>
 
     : <div className="container">
 
-      { loading ? <h1>Loading...</h1>
-      : <Table data={currentItems} onSelectRow={onSelectRow} />}
+      { loading ? <h1 className="loader">Loading...</h1>
+      : <div>
+          <Search />
+          <Table data={data} onSelectRow={onSelectRow} />
+        </div>}
 
-      {data.length > 50
-        ? <ReactPaginate
-            previousLabel={'previous'}
-            nextLabel={'next'}
-            breakLabel={'...'}
-            breakClassName={'break-me'}
-            pageCount={20}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={paginate}
-            containerClassName={'pagination'}
-            activeClassName={'active'}
-            pageClassName="page-item"
-            pageLinkClassName="page-link"
-            previousClassName="page-item"
-            previousLinkClassName="page-link"
-            nextClassName="page-item"
-            nextLinkClassName="page-link"
-          />
-        : null
-      }
 
       { row ? <RowDetails row={row} /> : null}
 

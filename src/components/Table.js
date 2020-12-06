@@ -1,7 +1,10 @@
 import React, { useState, useMemo } from 'react'
+import ReactPaginate from 'react-paginate'
 
 
 const Table = ({ data, onSelectRow }) => {
+
+  console.log(data.length)
 
   const useSortableData = (items, config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
@@ -36,7 +39,26 @@ const Table = ({ data, onSelectRow }) => {
   const { items, requestSort, sortConfig } = useSortableData(data);
 
 
+// pagination
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 50
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const currentItems = items.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber.selected+1)
+  }
+
+
   return (
+    <div>
     <table className="table">
       <thead>
         <tr>
@@ -48,7 +70,7 @@ const Table = ({ data, onSelectRow }) => {
         </tr>
       </thead>
       <tbody>
-        {items.map((it, idx) => (
+        {currentItems.map((it, idx) => (
           <tr key={idx} onClick={() => onSelectRow(it)}>
             <td>{it.id}</td>
             <td>{it.firstName}</td>
@@ -59,6 +81,29 @@ const Table = ({ data, onSelectRow }) => {
         ))}
       </tbody>
     </table>
+
+    {data.length > 50
+      ? <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={20}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={paginate}
+          containerClassName={'pagination'}
+          activeClassName={'active'}
+          pageClassName="page-item"
+          pageLinkClassName="page-link"
+          previousClassName="page-item"
+          previousLinkClassName="page-link"
+          nextClassName="page-item"
+          nextLinkClassName="page-link"
+        />
+      : null
+    }
+    </div>
   )
 }
 
