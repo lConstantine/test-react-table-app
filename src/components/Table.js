@@ -2,9 +2,7 @@ import React, { useState, useMemo } from 'react'
 import ReactPaginate from 'react-paginate'
 
 
-const Table = ({ data, onSelectRow }) => {
-
-  console.log(data.length)
+const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
 
   const useSortableData = (items, config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
@@ -39,15 +37,33 @@ const Table = ({ data, onSelectRow }) => {
   const { items, requestSort, sortConfig } = useSortableData(data);
 
 
-// pagination
 
-  const [currentPage, setCurrentPage] = useState(1)
+  const getFilteredData = (items, search) => {
+
+     if (!search) {
+       return items
+     }
+
+
+    return items.filter(it => {
+      return it.firstName.toLowerCase().includes(search.toLowerCase())
+      || it.lastName.toLowerCase().includes(search.toLowerCase())
+      || it.email.toLowerCase().includes(search.toLowerCase())
+    })
+  }
+
+
+
+  const filteredData = getFilteredData(items, search)
+
   const itemsPerPage = 50
+
+  const pageCount = Math.ceil(filteredData.length / itemsPerPage)
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-  const currentItems = items.slice(
+  const currentItems = filteredData.slice(
     indexOfFirstItem,
     indexOfLastItem
   );
@@ -55,6 +71,8 @@ const Table = ({ data, onSelectRow }) => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber.selected+1)
   }
+
+
 
 
   return (
@@ -88,7 +106,7 @@ const Table = ({ data, onSelectRow }) => {
           nextLabel={'next'}
           breakLabel={'...'}
           breakClassName={'break-me'}
-          pageCount={20}
+          pageCount={pageCount}
           marginPagesDisplayed={2}
           pageRangeDisplayed={5}
           onPageChange={paginate}
@@ -100,6 +118,7 @@ const Table = ({ data, onSelectRow }) => {
           previousLinkClassName="page-link"
           nextClassName="page-item"
           nextLinkClassName="page-link"
+          forcePage={currentPage}
         />
       : null
     }

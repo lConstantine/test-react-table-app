@@ -14,6 +14,9 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   const [modeSelected, setModeSelected] = useState(false)
   const [row, setRow] = useState(null)
+  const [search, setSearch] = useState('')
+
+  const [currentPage, setCurrentPage] = useState(1)
 
   const fetchData = async(url) => {
     setLoading(true)
@@ -30,10 +33,15 @@ const App = () => {
       setModeSelected(true)
   }
 
-
   const onSelectRow = selectedRow => {
   setRow(selectedRow)
 }
+
+  const onSearch = value => {
+    setSearch(value)
+    setCurrentPage(1)
+  }
+
 
   return (
 
@@ -45,10 +53,11 @@ const App = () => {
     : <div className="container">
 
       { loading ? <h1 className="loader">Loading...</h1>
-      : <div>
-          <Search />
-          <Table data={data} onSelectRow={onSelectRow} />
-        </div>}
+      : <>
+          <Search onSearch={onSearch} />
+          <Table data={data} onSelectRow={onSelectRow} search={search} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        </>
+      }
 
 
       { row ? <RowDetails row={row} /> : null}
