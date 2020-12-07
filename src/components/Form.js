@@ -25,7 +25,7 @@ const Form = ({ data, setData }) => {
   const onSubmit = () => {
 
     const newData = [{
-      id: Number(id),
+      id,
       firstName,
       lastName,
       email,
@@ -40,7 +40,7 @@ const Form = ({ data, setData }) => {
     }, ...data]
 
     setData(newData)
-    setIsFormVisible(!isFormVisible)
+    setIsFormVisible(false)
   }
 
 
@@ -72,39 +72,52 @@ const Form = ({ data, setData }) => {
                   <tr>
                     <td>
                       <input
-                        type="text"
-                        id="id"
+                        type="number"
+                        name="id"
                         min="0"
                         max="1000"
                         value={id}
+                        pattern="\d{1,3}|^1000$"
+                        required
+                        placeholder="0 - 1000"
                         onChange={(e) => setId(e.target.value)} />
                     </td>
                     <td>
                       <input
                         type="text"
-                        id="firstName"
+                        name="firstName"
                         value={firstName}
+                        required
+                        placeholder="Ivan"
                         onChange={(e) => setFirstName(e.target.value)} />
                     </td>
                     <td>
                       <input
                         type="text"
-                        id="lastName"
+                        name="lastName"
                         value={lastName}
+                        required
+                        placeholder="Ivanov"
                         onChange={(e) => setLastName(e.target.value)} />
                     </td>
                     <td>
                       <input
                         type="email"
-                        id="email"
+                        name="email"
                         value={email}
+
+                        required
+                        placeholder="mail@mail.ru"
                         onChange={(e) => setEmail(e.target.value)} />
                     </td>
                     <td>
                       <input
                         type="tel"
-                        id="phone"
+                        name="phone"
                         value={phone}
+                        pattern="^\+?[78][-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$"
+                        required
+                        placeholder="7(987)654-3211"
                         onChange={(e) => setPhone(e.target.value)} />
                     </td>
                   </tr>
@@ -116,10 +129,11 @@ const Form = ({ data, setData }) => {
                   disabled={!isSubmitEnabled}>
                     Add
                 </button>
-                <button
+                <a onClick={() => setIsFormVisible(false)}
+                  href="#"
                   className="btn btn-danger add-button">
                     Back
-                </button>
+                </a>
               </div>
             </form>
   )
