@@ -68,7 +68,7 @@ const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
     <table className="table">
       <thead>
         <tr>
-          <th onClick={() => requestSort('id')} >Id {sortConfig && sortConfig.key === 'id' ? <small>{sortConfig.direction}</small> : null}</th>
+          <th onClick={() => requestSort('id')} >ID {sortConfig && sortConfig.key === 'id' ? <small>{sortConfig.direction}</small> : null}</th>
           <th onClick={() => requestSort('firstName')}>First Name {sortConfig && sortConfig.key === 'firstName' ? <small>{sortConfig.direction}</small> : null}</th>
           <th onClick={() => requestSort('lastName')}>Last Name {sortConfig && sortConfig.key === 'lastName' ? <small>{sortConfig.direction}</small> : null}</th>
           <th onClick={() => requestSort('email')}>Email {sortConfig && sortConfig.key === 'email' ? <small>{sortConfig.direction}</small> : null}</th>

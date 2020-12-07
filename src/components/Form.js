@@ -12,11 +12,10 @@ const Form = ({ data, setData }) => {
   const [isSubmitEnabled, setIsSubmitEnabled] = useState(false)
 
   useEffect( () => {
+
       if (id !== '' && firstName !== '' && lastName !== '' && email !== '' && phone !== '') {
         if (id.trim !== '' && firstName.trim !== '' && lastName.trim !== '' && email.trim !== '' && phone.trim !== '') {
           setIsSubmitEnabled(true)
-        } else {
-          setIsSubmitEnabled(false)
         }
       }
   }, [id, firstName, lastName, email, phone])
@@ -25,7 +24,7 @@ const Form = ({ data, setData }) => {
   const onSubmit = () => {
 
     const newData = [{
-      id,
+      id: Number(id),
       firstName,
       lastName,
       email,
@@ -47,24 +46,24 @@ const Form = ({ data, setData }) => {
   return (
           !isFormVisible
           ? <button className="button-top btn btn-primary btn-sm" onClick={() => setIsFormVisible(!isFormVisible)}>Add Info</button>
-          : <form className="form" onSubmit={onSubmit}>
+          : <form className="form" id="form" onSubmit={onSubmit}>
               <table className="form-table">
                 <thead>
                   <tr>
                     <td>
-                      <label htmlFor="id">id</label>
+                      <label htmlFor="id">ID</label>
                     </td>
                     <td>
-                      <label htmlFor="firstName">firstName</label>
+                      <label htmlFor="firstName">First Name</label>
                     </td>
                     <td>
-                      <label htmlFor="lastName">lastName</label>
+                      <label htmlFor="lastName">Last Name</label>
                     </td>
                     <td>
-                      <label htmlFor="email">email</label>
+                      <label htmlFor="email">Email</label>
                     </td>
                     <td>
-                      <label htmlFor="phone">phone</label>
+                      <label htmlFor="phone">Phone</label>
                     </td>
                   </tr>
                 </thead>
@@ -77,7 +76,6 @@ const Form = ({ data, setData }) => {
                         min="0"
                         max="1000"
                         value={id}
-                        pattern="\d{1,3}|^1000$"
                         required
                         placeholder="0 - 1000"
                         onChange={(e) => setId(e.target.value)} />
@@ -105,7 +103,6 @@ const Form = ({ data, setData }) => {
                         type="email"
                         name="email"
                         value={email}
-
                         required
                         placeholder="mail@mail.ru"
                         onChange={(e) => setEmail(e.target.value)} />
@@ -129,11 +126,12 @@ const Form = ({ data, setData }) => {
                   disabled={!isSubmitEnabled}>
                     Add
                 </button>
-                <a onClick={() => setIsFormVisible(false)}
-                  href="#"
-                  className="btn btn-danger add-button">
+                <button
+                  type="reset"
+                  className="btn btn-danger add-button"
+                  onClick={() => setIsFormVisible(false)}>
                     Back
-                </a>
+                </button>
               </div>
             </form>
   )
