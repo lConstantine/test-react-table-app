@@ -14,10 +14,19 @@ const Form = ({ data, setData }) => {
   useEffect( () => {
 
       if (id !== '' && firstName !== '' && lastName !== '' && email !== '' && phone !== '') {
-        if (id.trim !== '' && firstName.trim !== '' && lastName.trim !== '' && email.trim !== '' && phone.trim !== '') {
+        if (id.trim() !== '' && firstName.trim() !== '' && lastName.trim() !== '' && email.trim() !== '' && phone.trim() !== '') {
           setIsSubmitEnabled(true)
         }
       }
+
+      if (isSubmitEnabled) {
+        if (id === '' || firstName === '' || lastName === '' || email === '' || phone === '') {
+          if (id.trim() === '' || firstName.trim() === '' || lastName.trim() === '' || email.trim() === '' || phone.trim() === '') {
+            setIsSubmitEnabled(false)
+          }
+        }
+      }
+
   }, [id, firstName, lastName, email, phone])
 
 
