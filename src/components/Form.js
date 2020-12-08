@@ -27,7 +27,7 @@ const Form = ({ data, setData }) => {
         }
       }
 
-  }, [id, firstName, lastName, email, phone])
+  }, [id, firstName, lastName, email, phone, isSubmitEnabled])
 
 
   const onSubmit = () => {
