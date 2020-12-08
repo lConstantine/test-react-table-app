@@ -1,12 +1,14 @@
 
 import './App.css';
 import React, { useState } from 'react';
-import axios from 'axios'
+// import axios from 'axios'
 import Table from './components/Table'
 import RowDetails from './components/RowDetails'
 import ModeSelector from './components/ModeSelector'
 import Search from './components/Search'
 import Form from './components/Form'
+import littleDataMock from './serverMock/littleDataMock.js';
+import bigDataMock from './serverMock/bigDataMock.js';
 
 
 const App = () => {
@@ -18,14 +20,36 @@ const App = () => {
   const [search, setSearch] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
 
+
+   /* so I decided to mock the server request here due to the issues with
+      https - http conflict on github pages */
+
   const fetchData = async(url) => {
     setLoading(true)
     try {
-      await axios(url).then(resp => setData(resp.data))
+      await serverMock(url).then(response => setData(response.data))
     } catch(e) {
       console.log(e)
     }
     setLoading(false)
+  }
+
+  const serverMock = (url) => {
+    if (url.includes('rows=32')) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => resolve({
+          data: littleDataMock
+        }), 300)
+      })
+    }
+
+    if (url.includes('rows=1000')) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => resolve({
+          data: bigDataMock
+        }), 800)
+      })
+    }
   }
 
   const onSelectMode = selectedMode => {

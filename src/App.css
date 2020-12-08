@@ -83,3 +83,11 @@
   justify-content: space-between;
   width: 64vw;
 }
+
+.mode-button {
+  margin: 10px;
+}
+
+.table th, tr {
+  min-width: 10vw;
+}

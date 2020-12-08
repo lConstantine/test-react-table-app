@@ -7,8 +7,8 @@ const ModeSelector = ({ onSelectMode }) => {
 
   return (
     <div>
-      <button className="btn btn-primary" onClick={() => onSelectMode(littleDataUrl)}>32 ITEMS</button>
-      <button className="btn btn-warning" onClick={() => onSelectMode(bigDataUrl)}>1000 ITEMS</button>
+      <button className="btn btn-primary mode-button" onClick={() => onSelectMode(littleDataUrl)}>32 ITEMS</button>
+      <button className="btn btn-warning mode-button" onClick={() => onSelectMode(bigDataUrl)}>1000 ITEMS</button>
     </div>
   )
 }
