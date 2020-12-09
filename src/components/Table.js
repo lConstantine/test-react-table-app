@@ -42,7 +42,8 @@ const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
      }
 
     return items.filter(it => {
-      return it.firstName.toLowerCase().includes(search.toLowerCase())
+      return it.id.toString().includes(search.toLowerCase())
+      || it.firstName.toLowerCase().includes(search.toLowerCase())
       || it.lastName.toLowerCase().includes(search.toLowerCase())
       || it.email.toLowerCase().includes(search.toLowerCase())
     })

@@ -19,7 +19,8 @@ All the good stuff, you know =)
 
 Oh and according to the spec the visual part is not a priority so I just threw in some bits of **Bootstrap** here and there.
 
-You can take a look at the app here: https://lconstantine.github.io/test-react-table-app/
+You can play with the app here: https://lconstantine.github.io/test-react-table-app/
+
 or get it running locally by cloning the repo and using the basic create-react-app script:
 
 ### `yarn start`
