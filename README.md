@@ -1,5 +1,7 @@
 # An Implementation of a React.js test task offered to me by the Future company on hh.ru
 
+## Desktop only!
+
 Created with **create-react app**, built with **webpack**
 
 Here's the link to the task itself: https://github.com/fugr-ru/frontend-javascript-test
@@ -9,13 +11,13 @@ Sorry, I'm not gonna translate it.
 Here I've learned and implemented features as:
 
 + table layout
-+ fetching data from a server
++ fetching data from a server (**axios**)
 + sorting
-+ pagination
++ pagination (**react-paginate**)
 + filtering
 + data manipulation in arrays and objects
 
-All the good stuff, you know =)
+All the good stuff, you know ;)
 
 Oh and according to the spec the visual part is not a priority so I just threw in some bits of **Bootstrap** here and there.
 
