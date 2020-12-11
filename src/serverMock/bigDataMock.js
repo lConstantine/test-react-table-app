@@ -1,4 +1,4 @@
-const bigDataMock = [
+export const bigDataMock = [
   {
   "id": 797,
   "firstName": "Manish",
@@ -14000,5 +14000,3 @@ const bigDataMock = [
   "description": "aliquam massa elit porttitor tellus odio sit nec ac vitae facilisis odio elit magna at mattis elementum amet augue lacus porta aenean at magna placerat aenean tellus ac quis sed eros etiam"
   }
   ]
-
-export default bigDataMock

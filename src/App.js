@@ -2,13 +2,13 @@
 import './App.css';
 import React, { useState } from 'react';
 // import axios from 'axios'
-import Table from './components/Table'
-import RowDetails from './components/RowDetails'
-import ModeSelector from './components/ModeSelector'
-import Search from './components/Search'
-import Form from './components/Form'
-import littleDataMock from './serverMock/littleDataMock.js';
-import bigDataMock from './serverMock/bigDataMock.js';
+import { Table } from './components/Table'
+import { RowDetails } from './components/RowDetails'
+import { ModeSelector } from './components/ModeSelector'
+import { Search } from './components/Search'
+import { Form } from './components/Form'
+import { littleDataMock } from './serverMock/littleDataMock.js';
+import { bigDataMock } from './serverMock/bigDataMock.js';
 
 
 const App = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const RowDetails = ({ row }) => {
+export const RowDetails = ({ row }) => {
 
   return (
     <div>
@@ -15,5 +15,3 @@ const RowDetails = ({ row }) => {
     </div>
   );
 };
-
-export default RowDetails

@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import ReactPaginate from 'react-paginate'
 
 
-const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
+export const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
 
   const useSortableData = (items, config = null) => {
     const [sortConfig, setSortConfig] = useState(config);
@@ -113,5 +113,3 @@ const Table = ({ data, onSelectRow, search, currentPage, setCurrentPage }) => {
     </div>
   )
 }
-
-export default Table

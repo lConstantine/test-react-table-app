@@ -1,4 +1,4 @@
-const littleDataMock = [
+export const littleDataMock = [
   {
   "id": 536,
   "firstName": "Glenderee",
@@ -448,5 +448,3 @@ const littleDataMock = [
   "description": "sed lacus elementum pretium magna nullam nullam nec amet dolor sollicitudin dolor amet tellus molestie egestas magna lacus sit fringilla at tortor orci risus consectetur lorem risus sed turpis placerat vestibulum lorem"
   }
   ]
-
-  export default littleDataMock

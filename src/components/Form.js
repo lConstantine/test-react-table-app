@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 
-const Form = ({ data, setData }) => {
+export const Form = ({ data, setData }) => {
 
   const [isFormVisible, setIsFormVisible] = useState(false)
   const [id, setId] = useState('')
@@ -13,17 +13,17 @@ const Form = ({ data, setData }) => {
 
   useEffect( () => {
 
+    if (isSubmitEnabled) {
+      if (id === '' || firstName === '' || lastName === '' || email === '' || phone === '') {
+        if (id.trim() === '' || firstName.trim() === '' || lastName.trim() === '' || email.trim() === '' || phone.trim() === '') {
+          setIsSubmitEnabled(false)
+        }
+      }
+    }
+
       if (id !== '' && firstName !== '' && lastName !== '' && email !== '' && phone !== '') {
         if (id.trim() !== '' && firstName.trim() !== '' && lastName.trim() !== '' && email.trim() !== '' && phone.trim() !== '') {
           setIsSubmitEnabled(true)
-        }
-      }
-
-      if (isSubmitEnabled) {
-        if (id === '' || firstName === '' || lastName === '' || email === '' || phone === '') {
-          if (id.trim() === '' || firstName.trim() === '' || lastName.trim() === '' || email.trim() === '' || phone.trim() === '') {
-            setIsSubmitEnabled(false)
-          }
         }
       }
 
@@ -137,7 +137,7 @@ const Form = ({ data, setData }) => {
                 </button>
                 <button
                   type="reset"
-                  className="btn btn-danger add-button"
+                  className="btn btn-danger add-button button-reset"
                   onClick={() => setIsFormVisible(false)}>
                     Back
                 </button>
@@ -145,5 +145,3 @@ const Form = ({ data, setData }) => {
             </form>
   )
 }
-
-export default Form
